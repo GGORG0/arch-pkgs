@@ -1,0 +1,24 @@
+pkgname=ggorg-hass-ssh-shutdown
+pkgver=1
+pkgrel=1
+pkgdesc="SSH user for Home Assistant to suspend or power off the system"
+arch=('any')
+license=('custom')
+depends=()
+source=('authorized_keys' '49-hass-ssh-shutdown.rules' 'sysusers.conf' 'tmpfiles.conf')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+package() {
+    install -Dm644 "$srcdir/sysusers.conf" \
+        "$pkgdir/usr/lib/sysusers.d/${pkgname}.conf"
+
+    install -Dm644 "$srcdir/tmpfiles.conf" \
+        "$pkgdir/usr/lib/tmpfiles.d/${pkgname}.conf"
+
+    install -Dm600 "$srcdir/authorized_keys" \
+        "$pkgdir/var/lib/${pkgname}/.ssh/authorized_keys"
+
+    install -Dm644 "$srcdir/49-hass-ssh-shutdown.rules" \
+        "$pkgdir/usr/share/polkit-1/rules.d/49-hass-ssh-shutdown.rules"
+}
+
