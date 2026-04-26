@@ -1,0 +1,18 @@
+pkgname=ggorg-sudo-rs-is-sudo
+pkgver=1
+pkgrel=1
+pkgdesc="Symlinks that change sudo commands to sudo-rs"
+arch=('any')
+license=('custom')
+depends=('sudo-rs')
+source=()
+sha256sums=()
+
+package() {
+    install -Ddm755 "$pkgdir/usr/local/bin"
+    ln -s "/usr/bin/sudo-rs" "$pkgdir/usr/local/bin/sudo"
+    ln -s "/usr/bin/su-rs" "$pkgdir/usr/local/bin/su"
+    ln -s "/usr/bin/visudo-rs" "$pkgdir/usr/local/bin/visudo"
+    ln -s "/usr/bin/sudoedit-rs" "$pkgdir/usr/local/bin/sudoedit"
+}
+
