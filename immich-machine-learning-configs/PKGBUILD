@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Configuration files for Immich machine learning"
 arch=('any')
 license=('custom')
-depends=()
+depends=('immich-machine-learning')
 source=('immich.conf' 'sysusers.conf' 'tmpfiles.conf')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
