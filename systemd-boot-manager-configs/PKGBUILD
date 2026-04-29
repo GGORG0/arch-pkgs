@@ -1,5 +1,5 @@
 pkgname=ggorg-systemd-boot-manager-configs
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Configuration files for sdboot-manage"
 arch=('any')
@@ -7,6 +7,7 @@ license=('custom')
 depends=('systemd-boot-manager')
 source=('no-plymouth.conf' 'force-fsck.conf' 'hibernation.conf')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
+install='sdboot-gen.install'
 
 package() {
     for file in ${source[@]}; do
