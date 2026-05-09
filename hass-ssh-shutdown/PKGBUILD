@@ -16,7 +16,10 @@ package() {
     install -Dm644 "$srcdir/tmpfiles.conf" \
         "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
-    install -Dm600 "$srcdir/authorized_keys" \
+    install -dm700 "$pkgdir/var/lib/${_pkgname}"
+    install -dm700 "$pkgdir/var/lib/${_pkgname}/.ssh"
+
+    install -m600 "$srcdir/authorized_keys" \
         "$pkgdir/var/lib/${_pkgname}/.ssh/authorized_keys"
 
     install -Dm644 "$srcdir/49-${_pkgname}.rules" \
