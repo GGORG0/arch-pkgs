@@ -6,7 +6,7 @@ pkgdesc="SSH user for Home Assistant to suspend or power off the system"
 arch=('any')
 license=('custom')
 depends=()
-source=('authorized_keys' '49-hass-ssh-shutdown.rules' 'sysusers.conf' 'tmpfiles.conf')
+source=('authorized_keys' "49-${_pkgname}.rules" 'sysusers.conf' 'tmpfiles.conf')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
@@ -19,7 +19,7 @@ package() {
     install -Dm600 "$srcdir/authorized_keys" \
         "$pkgdir/var/lib/${_pkgname}/.ssh/authorized_keys"
 
-    install -Dm644 "$srcdir/49-hass-ssh-shutdown.rules" \
-        "$pkgdir/usr/share/polkit-1/rules.d/49-hass-ssh-shutdown.rules"
+    install -Dm644 "$srcdir/49-${_pkgname}.rules" \
+        "$pkgdir/usr/share/polkit-1/rules.d/49-${_pkgname}.rules"
 }
 
