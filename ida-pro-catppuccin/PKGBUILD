@@ -6,6 +6,7 @@ pkgdesc="Soothing pastel theme for IDA (Interactive Disassembler)"
 arch=('x86_64')
 url="https://github.com/catppuccin/ida-debugger"
 license=('MIT')
+depends=('ida-pro')
 makedepends=('git')
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
